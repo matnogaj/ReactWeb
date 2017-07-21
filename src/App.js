@@ -1,7 +1,22 @@
+// @flow
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import ReactDOM from 'react-dom';
+
+
+function trolo(a: string) {
+  return a + '_123'
+}
+
+function trolo2(a: boolean) {
+  return a + '_123'
+}
+
+function square(x) {
+  return x * x;
+
+}
 
 class App extends Component {
   render() {
@@ -16,6 +31,7 @@ class App extends Component {
 
           Trolo lolo.
         </p>
+        <button style={{backgroundColor: "#fff"}}/>
         <button>Hey</button>
         <Game />
       </div>
@@ -139,10 +155,17 @@ class Game extends Component {
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'Winner: ' + winner + trolo(1);
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
+    let testing: boolean = false;
+    testing = 666;
+    trolo(1);
+    trolo(this.state);
+    trolo2(1234);
+
+    trolo2()
 
     return (
       <div className="game">
