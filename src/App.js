@@ -32,16 +32,6 @@ function Square(props) {
 }
 
 class Board extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     // squares: Array(9).fill(null),
-  //     history: [{
-  //       squares: Array(9).fill(null),
-  //     }],
-  //     xIsNext: true,
-  //   };
-  // }
 
   renderSquare(i) {
     return <Square value={this.props.squares[i]}
