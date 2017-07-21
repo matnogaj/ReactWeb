@@ -2,29 +2,58 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+
 // import ReactDOM from 'react-dom';
 
-
-function trolo(a: string) {
-  return a + '_123'
-}
-
-function trolo2(a: boolean) {
-  return a + '_123'
-}
-
-function square(x) {
-  return x * x;
-
+class Response {
+  config: Object
+  data: Object
+  headers: Object
+  request: XMLHttpRequest
+  status: number
+  statusText: string
 }
 
 class App extends Component {
+  state: {
+    externalValue: ?string
+  }
+
+  constructor() {
+    super();
+
+    this.state = {
+      externalValue: null
+    };
+
+    const object: Object = {trolo: 'fak ju'};
+    const dupa: Response = object;
+    console.log(dupa.status);
+    // console.log(dupa.checkThisOut);
+    this.getJSON();
+  }
+
+  getJSON() {
+    axios.get('http://echo.jsontest.com/key/wubadubadubdub')
+      .then((response: Response) => {
+        // console.log(response.statusText);
+        // console.log(response.data['key']);
+        console.log(this);
+        this.setState({externalValue: response.data['key']});
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
+          <h2>{this.state.externalValue}</h2>
         </div>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
@@ -155,17 +184,10 @@ class Game extends Component {
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner + trolo(1);
+      status = 'Winner: ' + winner;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
-    let testing: boolean = false;
-    testing = 666;
-    trolo(1);
-    trolo(this.state);
-    trolo2(1234);
-
-    trolo2()
 
     return (
       <div className="game">
